@@ -8,7 +8,8 @@ import openai
 
 load_dotenv()
 
-INSPECT_REQUEST_HELP_MESSAGE = 'Shows the user what messages are being sent to the API. By default, it only sends the last response sent by the API (for context) plus the current prompt.'
+INSPECT_REQUEST_HELP_MESSAGE = 'Shows the user what messages are being sent to the API. By default, it only \
+                                sends the last response sent by the API (for context) plus the current prompt.'
 HELP_MESSAGE_TEMPLATE = 'Example usage: {filename} "Who won the world series in 2020?"'
 MESSAGES_SAVE_FILENAME = "messages.save.txt"
 
@@ -32,7 +33,7 @@ class ChatGPTAPI:
             model="gpt-3.5-turbo", messages=last_two_messages
         )
         assistant_response = response["choices"][0]["message"]["content"]
-        # print(response)
+        print(response)
         self.add_message("assistant", assistant_response)
         self.keep_most_recent_messages()
         self.save_messages()
