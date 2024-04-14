@@ -29,10 +29,10 @@ class ChatGPTAPI:
         last_two_messages = self.get_last_messages(2)
         if inspect_request:
             self.print_messages_as_json(last_two_messages)
-        response = openai.ChatCompletion.create(
+        response = openai.chat.completions.create(
             model="gpt-3.5-turbo", messages=last_two_messages
         )
-        assistant_response = response["choices"][0]["message"]["content"]
+        assistant_response = response.choices[0].message.content
         print(response)
         self.add_message("assistant", assistant_response)
         self.keep_most_recent_messages()
